@@ -32,25 +32,22 @@ const pokemonList = [
   },
 ];
 
-const handlePrevious = () => {
-  if (pokemonIndex>0) {
-  setPokemonIndex(pokemonIndex - 1);
-  }
-};
-
-const handleNext = () => {
-  if (pokemonIndex < pokemonList.length - 1){
-  setPokemonIndex(pokemonIndex + 1);
-  }
-};
   return (
-    <>
+    <>        
+    <nav>
+      {pokemonList.map((pokemon, index) => (
+        <button 
+        key={pokemon.name} 
+        onClick={() => setPokemonIndex(index)}>
+          {pokemon.name}
+          </button>
+      ))}
+    </nav>
+
       <PokemonCard pokemon={pokemonList[pokemonIndex]}/>
-      <button type="button" onClick={handlePrevious}>Précedent</button>
-      <button type="button" onClick={handleNext}>Suivant</button>
     </>
   )
-}
 
+}
 
 export default App
